@@ -8,6 +8,13 @@ Write a function called addTwo that takes in an array and adds two to every valu
 
 const addTwo = (arr) => {
   // Solution code here...
+  let newArray = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    newArray.push((arr[i] += 2));
+  }
+
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -19,6 +26,9 @@ Write a function named containsW that takes in a string. This function should us
 
 const containsW = (str) => {
   // Solution code here...
+  const regex = /w/;
+
+  return regex.test(str);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,6 +45,9 @@ For example:
 
 const isNum = (input) => {
   // Solution code here...
+  const regex = /\d/;
+
+  return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,6 +59,9 @@ Write a function named containsWorld that takes in a string or number of any len
 
 const containsWorld = (input) => {
   // Solution code here...
+  const regex = /\bworld\b/;
+
+  return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -57,7 +73,16 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  let matchsArray = [];
+  const regex = /^[A-Z]/;
+  const regexSplit = /[\s,).]+/;
+  const stringArray = str.split(regexSplit);
+
+  stringArray.forEach((string) => {
+    if (regex.test(string)) matchsArray.push(string);
+  });
+
+  return matchsArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -66,9 +91,15 @@ CHALLENGE 6
 Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression pattern to return a new array containing any cities that begin with the letters A through J, inclusive.
 ------------------------------------------------------------------------------------------------ */
 const citiesAtoJ = (arr) => {
-  // Solution code here...
-};
+  let citiesArray = [];
+  const regex = /^[A-J]/;
 
+  arr.forEach((city) => {
+    if (regex.test(city)) citiesArray.push(city);
+  });
+
+  return citiesArray;
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
@@ -83,7 +114,14 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = (input) => {
   // Solution code here...
+  const regex1 = /\boct\b/;
+  const regex2 = /\Oct\b/;
+  const regex3 = /\bOctober\b/;
+  const regex4 = /\boctober\b/;
+
+  return regex1.test(input) || regex2.test(input) || regex3.test(input) || regex4.test(input);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -97,6 +135,8 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 
 const noPunctuation = (str) => {
   // Solution code here...
+  return str.match(/[A-Za-z0-9]+\s/g)  
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -113,6 +153,7 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 
 let hangman = (str) => {
   // Solution code here...
+  return str.replace(/a|A|e|E|i|I|o|O|u|U/g,'_')
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -130,6 +171,7 @@ const seashells =
 
 const findShells = (str) => {
   // Solution code here...
+  return str.match(/\w*ells\b/g)
 };
 
 /* ------------------------------------------------------------------------------------------------

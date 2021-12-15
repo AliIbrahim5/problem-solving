@@ -233,11 +233,8 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 
 const sortSchedule = (arr) => {
   // Solution code here...
-  return arr.sort((a, b) => {
-    const metting1 = a.end - a.start;
-    const metting2 = b.end - b.start;
-    return days[a.dayOfWeek] - days[b.dayOfWeek] || metting1 - metting2;
-  });
+ 
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
