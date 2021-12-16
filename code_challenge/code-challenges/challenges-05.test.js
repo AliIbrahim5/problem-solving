@@ -191,10 +191,10 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const removeEvenValues = (arr) => {
+  let number = [];
   return arr.filter((number) => {
     return number % 2 !== 0;
   });
-  // Solution code here...
 };
 
 
