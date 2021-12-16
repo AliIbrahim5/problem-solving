@@ -168,7 +168,13 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 
 const stepActions = (recipe) => {
   let result = [];
+  result =recipe.steps.map((step)=>{
+    return step.split(" ")[0];
+  })
+
+  return result;
   // Solution code here...
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -185,8 +191,12 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const removeEvenValues = (arr) => {
+  return arr.filter((number) => {
+    return number % 2 !== 0;
+  });
   // Solution code here...
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -204,6 +214,7 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
+  return str.slice(0, str.length - numberOfCharacters);
   // Solution code here...
 };
 
@@ -215,6 +226,11 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 
 const totalSumCSV = (str) => {
   let total = 0;
+  const num =str.split(",");
+  num.forEach((num)=>{
+    total += Number(num);
+  })
+  return total;
   // Solution code here...
 };
 
@@ -227,6 +243,7 @@ For example, removeVowels('gregor') returns 'grgr'.
 ------------------------------------------------------------------------------------------------ */
 
 const removeVowels = (str) => {
+  return str.replace(/[aeiou]/gi, '');
   // Solution code here...
 };
 
@@ -241,6 +258,12 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 ------------------------------------------------------------------------------------------------ */
 
 const extractVowels = (str) => {
+  let vowels = [];
+  vowels[0] = str.replace(/[aeiou]/gi, '');
+  vowels[1] = str.replace(/[^aeiou]/gi, '').split('').sort().join('');
+
+  return vowels;
+
   // Solution code here...
 };
 
