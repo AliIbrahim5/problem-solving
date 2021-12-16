@@ -183,8 +183,19 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-	// Solution code here...
-};
+	let found = false;
+  
+	arr.forEach((item) => {
+	  for (const [key, value] of Object.entries(item)) {
+		if (value == character) found = true;
+	  }
+	});
+  
+	return found;
+		// Solution code here...
+  };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -193,6 +204,15 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
+	let numberOfCharacters = 0;
+
+	arr.forEach((item) => {
+	  if (item.name) numberOfCharacters += 1;
+	  if (item.spouse) numberOfCharacters += 1;
+	  if (item.children) numberOfCharacters += item.children.length;
+	});
+  
+	return numberOfCharacters;
 	// Solution code here...
 };
 
@@ -208,6 +228,17 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 
 const houseSize = (arr) => {
 	const sizes = [];
+	
+
+	arr.forEach((item) => {
+	  let members = 0;
+	  if (item.name) members += 1;
+	  if (item.spouse) members += 1;
+	  if (item.children) members += item.children.length;
+	  sizes.push({ house: item.house, members });
+	});
+  
+	return sizes;
 	// Solution code here...
 };
 
@@ -231,6 +262,16 @@ const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
 const houseSurvivors = (arr) => {
 	const survivors = [];
+	arr.forEach((item) => {
+		let members = 0;
+		if (deceasedSpouses.find((name) => name != item.spouse)) {
+		  if (item.name) members += 1;
+		}
+		if (item.children) members += item.children.length;
+		survivors.push({ house: item.house, members });
+	  });
+	
+	  return survivors;
 	// Solution code here...
 };
 
