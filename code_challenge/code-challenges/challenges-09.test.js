@@ -19,6 +19,13 @@ Becomes:
 ------------------------------------------------------------------------------------------------ */
 
 function transformToLis(obj) {
+  let arry = [];
+
+  for (const [key, value] of Object.entries(obj)) {
+    arry.push(`<li>${key}: ${value}</li>`);
+  }
+
+  return arry;
   // Solution code here...
 }
 
@@ -30,6 +37,10 @@ Write a function named addValues that, given an array of numbers as input, uses 
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr) => {
+  return arr.reduce(function (acc, value) {
+    return acc + value;
+
+  },0)
   // Solution code here...
 };
 
@@ -46,6 +57,10 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
+
+  return arr.reduce(function(acc, item) {
+    return acc += item.purchasePrice
+  },0)
   // Solution code here...
 };
 
@@ -58,6 +73,10 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
+  return arr.reduce(function (acc, element) {
+
+    return acc +=1
+  },0)
   // Solution code here...
 };
 
@@ -121,6 +140,10 @@ let starWarsData = [
 ];
 
 const returnNames = (arr) => {
+  return arr.reduce(function(acc, item) {
+  acc.push(item.name)
+  return acc
+  },[])
   // Solution code here...
 };
 
@@ -133,6 +156,8 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
+  return str.split("").reduce((acc, char) => char + acc, "");
+  
   // Solution code here...
 };
 
@@ -186,6 +211,11 @@ const characters = [
 ];
 
 const countNumberOfChildren = (arr) => {
+  return arr.reduce(function (acc,item) {
+    if (item.children)  acc  += item.children.length;
+      return acc;
+    
+  },0)
   // Solution code here...
 };
 
@@ -198,6 +228,15 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
+  const avrg = arr.reduce((acc, val) => {
+  return {count: ++acc.count, sum : (acc.sum + val)}  
+ 
+  },
+  {count: 0, sum: 0}
+  )
+
+  return avrg.sum / avrg.count;
+
   // Solution code here...
 };
 
@@ -219,6 +258,10 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (arr) => {
+  return arr.reduce((acc, number) => {
+    if (isPrime(number)) acc++;
+    return acc;
+  }, 0);
   // Solution code here...
 };
 
