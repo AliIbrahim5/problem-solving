@@ -187,7 +187,11 @@ const hasChildrenEntries = (arr, character) => {
   
 	arr.forEach((item) => {
 	  for (const [key, value] of Object.entries(item)) {
-		if (value == character) found = true;
+		if (value == character){
+			found = true;
+		}
+     return false;
+		
 	  }
 	});
   
