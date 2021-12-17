@@ -23,6 +23,7 @@ Returns: ['dyoll', 'eimaj'];
 ------------------------------------------------------------------------------------------------ */
 
 const getNames = (arr) => {
+  return arr.map((value) => value.name.split("").reverse().join(""));
   // Solution code here...
 };
 
@@ -37,6 +38,11 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
+  return input.reduce((acc, inputt) => {
+    const findarr = inputt.filter((numbers) => numbers === target);
+    acc += findarr.length;
+    return acc;
+  }, 0);
   // Solution code here...
 };
 
@@ -51,6 +57,15 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
+  return input.reduce((acc, item) => {
+    const given = item.reduce((acc, item) => {
+      acc += item;
+      return acc;
+    }, 0);
+
+    acc += given;
+    return acc;
+  }, 0);
   // Solution code here...
 };
 
@@ -67,6 +82,15 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
+  return input.reduce((acc, array) => {
+    const arr = array
+      .filter((number) => {
+        if (typeof number == "number" && number % 5 == 0) return number;
+      })
+      .map((number) => Math.pow(2, number));
+    acc.push(arr);
+    return acc;
+  }, []);
   // Solution code here...
 };
 
@@ -135,6 +159,13 @@ let starWarsData = [
 ];
 
 let findMaleAndFemale = (data) => {
+  let array = "";
+  data.map((item) => {
+    if (item.gender == "male" || item.gender == "female")
+    array += item.name + " and ";
+  });
+  return array.slice(0, -5);
+
   // Solution code here...
 };
 
@@ -145,6 +176,8 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
+  let named = data.map((item) => item.name);
+  return named.sort((a, b)=>a.length -b.length)[1]; 
   // Solution code here...
 };
 
