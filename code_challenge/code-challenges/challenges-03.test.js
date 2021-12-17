@@ -215,10 +215,12 @@ const meetings = [
 ];
 
 const sortMeetingsByDay = (arr) => {
-  // Solution code here...
-  return arr.sort((a, b) => {
-    return days[a.dayOfWeek] - days[b.dayOfWeek];
+  const meetin = {"Monday": 1,"Tuesday": 2,"Wednesday": 3,"Thursday": 4,"Friday": 5,}
+  arr = arr.sort((a, b)=> {
+    return meetin[a.dayOfWeek] - meetin[b.dayOfWeek];
   });
+  return arr;
+  // Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
