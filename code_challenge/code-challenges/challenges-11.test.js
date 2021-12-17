@@ -12,6 +12,12 @@ Note the space in between first and last names.
 You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = (people) => {
+  let humen = [];
+  people.map((item,index) => {
+    humen.push(`${item.firstName} ${item.lastName}`)
+
+  })
+  return humen;
   // Solution code here...
 };
 
@@ -22,8 +28,12 @@ Write a function named validatePin that uses a regular expression pattern to val
 
 If the PIN is four numerical digits long, return true. Otherwise, return false.
 ------------------------------------------------------------------------------------------------ */
-
+//PIN التأكد من رقم 
+// في حال يتكون من اربع ارقام فأرجع لي صح واذا اكثر او اقل رجع لي خطاء
 const validatePin = (pin) => {
+  if (pin.toString().match(/^\d{4}$/g) )return true; {
+    return false;
+  }
   // Solution code here...
 };
 
@@ -34,8 +44,14 @@ Write a function named validateWord that uses a regular expression pattern to va
 
 If the word is between 5 and 10 characters long, return true. Otherwise, return false.
 ------------------------------------------------------------------------------------------------ */
+/* 
+تستخدم نمط تعبير عادي للتحقق من أن الكلمة تتكون من 5 إلى 10 أحرف.
 
+falseإذا كانت الكلمة يتراوح طولها بين 5 و 10 أحرف ، فارجع إلى "صحيح". وإلا ، فقم بإرجاع القيمة   .
+*/ 
 const validateWord = (word) => {
+  if(word.toString().match(/^[A-Za-z]+$/i)&& word.length.toString().match(/^[5-9]$|10/g)) return true
+  return false;
   // Solution code here...
 };
 
@@ -46,8 +62,14 @@ Write a function named hasNumber that uses a regular expression pattern to deter
 
 If it does, return true. If not, return false.
 ------------------------------------------------------------------------------------------------ */
+/*
+اكتب دالة باسم hasNumber تستخدم نمط تعبير عادي لتحديد ما إذا كانت السلسلة تحتوي على حرف واحد أو أكثر متبوعًا برقم واحد أو أكثر.
+إذا كان الأمر كذلك ، فارجع إلى الحقيقة. إذا لم يكن كذلك ، فقم بإرجاع خطأ.
 
+*/ 
 const hasNumber = (string) => {
+  if(string.toString().match(/[A-Za-z]\d/g)) return true
+  return false
   // Solution code here...
 };
 
@@ -66,8 +88,23 @@ Return either true or false.
 
 Note: if you ever need to validate an email using a regex in practice, the Internet has the actual regex you should use. It's many many lines long.
 ------------------------------------------------------------------------------------------------ */
+/*
+اكتب وظيفة باسم validateEmail تأخذ عنوان بريد إلكتروني وتتحقق من صحة استناده
+على عدة قواعد:
+  - كلمة واحدة أو كلمتان تفصل بينهما نقطة قبل الرمز @
+  - يمكن أن تحتوي على أرقام
+  - يمكن أن يحتوي على أي من نطاقات المستوى الأعلى التالية: .net أو .com أو .org
+  - لا توجد أحرف خاصة أخرى
+  - لا توجد نطاقات فرعية أو منافذ أو ما إلى ذلك: يجب أن يكون بالشكل name@place.com وليس name@sub.place.com: 3000
 
+العودة إما صح أو خطأ.
+
+ملاحظة: إذا احتجت في أي وقت إلى التحقق من صحة بريد إلكتروني باستخدام regex عمليًا ، فإن الإنترنت يحتوي على regex الفعلي الذي يجب عليك استخدامه. هناك العديد من الأسطر الطويلة.
+
+*/ 
 const validateEmail = (email) => {
+  if(email.toString().match(/^([a-zA-Z0-9]+|[a-zA-Z0-9]+.[a-zA-Z0-9]+)@[a-zA-Z]+(.net|.com|.org)$/g)) return true
+  return false
   // Solution code here...
 };
 
@@ -91,8 +128,27 @@ Your function should include a single regular expression pattern that matches an
 
 Return either true or false.
 ------------------------------------------------------------------------------------------------ */
+/*
+اكتب دالة باسم validatePhoneNumber تقبل رقم هاتف وتحدد ما إذا كان صالحًا.
 
+تشمل التنسيقات المقبولة:
+ - 5555-555 (555)
+ - (555) 555 5555
+ - 555555-5555
+ - 555-5555555
+ - 555-555 5555
+ - 555-555-5555
+ - 555555 5555
+ - 555555-5555
+ - 5555555555
+
+يجب أن تتضمن وظيفتك نمط تعبير عادي واحد يطابق أيًا من هذه التنسيقات.
+
+العودة إما صح أو خطأ.
+*/ 
 const validatePhoneNumber = (phoneNumber) => {
+  if(phoneNumber.toString().match(/^(\(\d{3}\)(\s\d{3}-\d{4}|\d{3}\s\d{4})|\d{3}\s(\d{3}-\d{4}|\d{3}\s\d{4})|\d{3}-(\d{7}|\d{3}\s\d{4}|\d{3}-\d{4})|\d{6}-\d{4}|\d{10}|\d{3}\s\d{7})$/g)) return true
+  return false
   // Solution code here...
 };
 
@@ -106,6 +162,8 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 ------------------------------------------------------------------------------------------------ */
 
 const findTagNames = (elements) => {
+  let mine = elements.map(item=>item.match(/\/.+?(?=>)/g))
+  return mine.join(",").split(",")
   // Solution code here...
 };
 
